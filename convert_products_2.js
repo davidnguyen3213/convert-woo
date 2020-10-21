@@ -39,10 +39,18 @@ function testConvertSpf() {
        }
     }
     else{
-      data_first[21] = getAttribute(array_attribue_1);
-      data_first[26] = getAttribute(array_attribue_2);
-      data = [].concat([data_first],data_flag);
-      
+      var count_attr = array_attribue_1.filter(onlyUnique);
+      if(count_attr.length == 1){
+        data_first[0] = "simple";
+        data_first[13] = spfdata[k][19];
+        data_first[14] = spfdata[k][20];
+        data = [data_first];
+      }
+      else{
+        data_first[21] = getAttribute(array_attribue_1);
+        data_first[26] = getAttribute(array_attribue_2);
+        data = [].concat([data_first],data_flag);
+      }
       wpsheet.getRange(2 + count_data , 1 , data.length, data[0].length).setValues(data);
       count_data += data.length;
       flag = k;
@@ -61,7 +69,9 @@ function testConvertSpf() {
   //wpsheet.getRange(2,1, wpdata.length, wpdata[0].length).setValues(wpdata);
 }
 function onlyUnique(value, index, self) {
-  return self.indexOf(value) === index;
+  if( value != ""){
+  	return self.indexOf(value) === index;
+  }
 }
 function getAttribute(array_attr){
   arr = array_attr.filter(onlyUnique);
