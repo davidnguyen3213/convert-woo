@@ -15,9 +15,10 @@ function convertEx() {
     //Order,Product Type,Variant,Title,Quantity,Price,Shipping,Fullname,Address1,Address2,City,Country,Code,Zip,Phone,e-mail,Note,Image,Url,SKU
     for (k = 1; k < spfdata.length; k++) {
         let row_import = spfdata[k];
-        let product_type = getLastSymbol(row_import[16]);
-        let variant = getVariant(row_import[2]);
-        firstrow = [row_import[0], product_type, row_import[2], row_import[3], row_import[4], row_import[6], row_import[5], "", row_import[7], "", row_import[8], row_import[9], row_import[11], row_import[10], row_import[21], row_import[15], product_type + "-" + variant, row_import[17], row_import[20]];
+        // let product_type = getLastSymbol(row_import[16]);
+        // let variant = getVariant(row_import[2]);
+        let product_type = row_import[16];
+        firstrow = [row_import[0], product_type, row_import[2], row_import[3], row_import[4], row_import[6], row_import[5], "", row_import[7], "", row_import[8], row_import[9], row_import[11], row_import[10], row_import[21], row_import[15], product_type, row_import[17], row_import[20]];
         wpdata.push(firstrow);
     }
 
